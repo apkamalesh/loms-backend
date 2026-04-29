@@ -4,7 +4,8 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Step 2: Run the application
-FROM openjdk:17-jdk-slim
+# CHANGE THIS LINE BELOW:
+FROM eclipse-temurin:17-jdk-jammy
 COPY --from=build /target/loms-backend-0.0.1-SNAPSHOT.jar loms-backend.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "loms-backend.jar"]
